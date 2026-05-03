@@ -5,40 +5,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+    <title>Register - Bike Rental</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/register.css">
 </head>
-
 <body>
 
-    <h2>Register</h2>
+    <div class="register-container">
 
-    <form action="${pageContext.request.contextPath}/register" method="post">
-        <label>Name:</label><br>
-        <input type="text" name="name" required><br><br>
+        <div class="register-header">
+            <div class="bike-icon">🏍️</div>
+            <h2>Create Account</h2>
+            <p>Join us and start riding today</p>
+        </div>
 
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+        <c:if test="${not empty error}">
+            <div class="error-message">
+                ${error}
+            </div>
+        </c:if>
 
-        <label>Phone:</label><br>
-        <input type="text" name="phone" required><br><br>
+        <form action="${pageContext.request.contextPath}/register" method="post">
 
-        <label>License:</label><br>
-        <input type="text" name="license_number"><br><br>
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
 
-        <button type="submit">Register</button>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone" placeholder="Enter your phone" required>
+            </div>
 
-    </form>
+            <div class="form-group">
+                <label>License Number</label>
+                <input type="text" name="license_number" placeholder="Enter license number (optional)">
+            </div>
 
-    <br>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Min 6 chars, 1 uppercase, 1 number, 1 symbol" required>
+            </div>
 
-    <c:if test="${not empty error}">
-        <p style="color:red;">
-            ${error}
-        </p>
-    </c:if>
+            <button type="submit" class="btn-register">Register</button>
+
+        </form>
+
+        <hr class="divider">
+
+        <div class="login-link">
+            Already have an account? <a href="${pageContext.request.contextPath}/login">Login here</a>
+        </div>
+
+    </div>
 
 </body>
 </html>
