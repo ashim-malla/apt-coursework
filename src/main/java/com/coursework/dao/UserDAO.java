@@ -1,5 +1,6 @@
 package com.coursework.dao;
 
+import com.coursework.model.User;
 import com.coursework.utilities.DBConfig;
 
 import java.sql.*;
@@ -32,4 +33,30 @@ public class UserDAO {
 
         return 0;
     }
+    
+    public User getUserByIdentifier(String identifier) {
+        String sql = "SELECT * FROM user WHERE email = ? OR user_id = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, identifier);
+            ps.setString(2, identifier);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("user_id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setPhone(rs.getString("phone"));
+                user.setLicenseNumber(rs.getString("license_number"));
+                user.setRole(rs.getString("role"));
+                user.setAccountStatus(rs.getString("account_status"));
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

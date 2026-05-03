@@ -9,6 +9,7 @@ public class User {
     private String phone;
     private String licenseNumber;
     private String role;
+    private String accountStatus;
 
     // Getters and Setters
 
@@ -60,4 +61,12 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+    
+    public String getAccountStatus() {
+    	return accountStatus;
+    }
+    public void setAccountStatus(String accountStatus) {
+    	this.accountStatus = accountStatus;
+    }
+    
 }
