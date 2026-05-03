@@ -5,29 +5,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login - Pokhara Wheels</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/auth.css">
 </head>
 <body>
 
-    <h2>Login</h2>
+    <div class="auth-container">
 
-    <form action="${pageContext.request.contextPath}/login" method="post">
-        <label>Email or User ID:</label><br>
-        <input type="text" name="identifier" required><br><br>
+        <div class="auth-header">
+            <div class="bike-icon">🏍️</div>
+            <h2>Welcome Back</h2>
+            <p>Login to your Pokhara Wheels account</p>
+        </div>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
+        <c:if test="${not empty error}">
+            <div class="error-message">
+                ${error}
+            </div>
+        </c:if>
 
-        <button type="submit">Login</button>
-    </form>
+        <form action="${pageContext.request.contextPath}/login" method="post">
 
-    <br>
+            <div class="form-group">
+                <label>Email or User ID</label>
+                <input type="text" name="identifier" placeholder="Enter your email or user ID" required>
+            </div>
 
-    <c:if test="${not empty error}">
-        <p style="color:red;">${error}</p>
-    </c:if>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
 
-    <p>Don't have an account? <a href="${pageContext.request.contextPath}/register">Register</a></p>
+            <button type="submit" class="btn-auth">Login</button>
+
+        </form>
+
+        <hr class="divider">
+
+        <div class="auth-link">
+            Don't have an account?
+            <a href="${pageContext.request.contextPath}/register">Register here</a>
+        </div>
+
+    </div>
 
 </body>
 </html>

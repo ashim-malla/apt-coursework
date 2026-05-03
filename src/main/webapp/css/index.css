@@ -1,0 +1,387 @@
+@charset "UTF-8";
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    color: #1a1a1a;
+    scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 60px;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 22px;
+    font-weight: 800;
+    color: #cc0000;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #555555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #cc0000;
+}
+
+.btn-nav-login {
+    padding: 7px 18px;
+    border: 1px solid #cc0000;
+    border-radius: 6px;
+    color: #cc0000 !important;
+    font-weight: 600 !important;
+}
+
+.btn-nav-register {
+    padding: 7px 18px;
+    background: #cc0000;
+    border-radius: 6px;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.btn-nav-register:hover {
+    background: #aa0000;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: #1a1a1a;
+}
+
+.hero-content h1 span {
+    color: #cc0000;
+}
+
+.hero-content p {
+    font-size: 17px;
+    color: #777777;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-primary {
+    padding: 12px 30px;
+    background: #cc0000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #aa0000;
+}
+
+.btn-secondary {
+    padding: 12px 30px;
+    border: 1px solid #dddddd;
+    color: #333333;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.btn-secondary:hover {
+    border-color: #cc0000;
+    color: #cc0000;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #888888;
+    font-size: 15px;
+}
+
+/* ===== FEATURES ===== */
+.features {
+    padding: 90px 60px;
+    background: #f9f9f9;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    transition: box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border-color: #cc0000;
+}
+
+.feature-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #cc0000;
+}
+
+.feature-card p {
+    color: #888888;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ===== BIKES ===== */
+.bikes {
+    padding: 90px 60px;
+    background: #ffffff;
+}
+
+.bikes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.bike-card {
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.bike-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #cc0000;
+}
+
+.bike-img {
+    background: #fff5f5;
+    padding: 25px;
+    text-align: center;
+    font-size: 55px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.bike-info {
+    padding: 18px;
+}
+
+.bike-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.bike-info p {
+    color: #aaaaaa;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.bike-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: #cc0000;
+    margin-bottom: 14px;
+}
+
+.bike-price span {
+    font-size: 12px;
+    color: #aaaaaa;
+    font-weight: 400;
+}
+
+.btn-book {
+    display: block;
+    text-align: center;
+    padding: 9px;
+    background: #cc0000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.btn-book:hover {
+    background: #aa0000;
+}
+
+/* ===== ABOUT ===== */
+.about {
+    padding: 90px 60px;
+    background: #f9f9f9;
+}
+
+.about-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    color: #1a1a1a;
+}
+
+.about-text h2 span {
+    color: #cc0000;
+}
+
+.about-text p {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-text .btn-primary {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.about-icon {
+    font-size: 90px;
+    text-align: center;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #1a1a1a;
+    padding: 50px 60px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto 30px;
+}
+
+.footer-brand {
+    font-size: 20px;
+    font-weight: 800;
+    color: #cc0000;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    color: #888888;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: #888888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #cc0000;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+    color: #666666;
+    font-size: 13px;
+}

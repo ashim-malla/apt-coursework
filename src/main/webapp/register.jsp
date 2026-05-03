@@ -5,14 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register - Bike Rental</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/register.css">
+    <title>Register - Pokhara Wheels</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/auth.css">
 </head>
 <body>
 
-    <div class="register-container">
+    <div class="auth-container">
 
-        <div class="register-header">
+        <div class="auth-header">
             <div class="bike-icon">🏍️</div>
             <h2>Create Account</h2>
             <p>Join us and start riding today</p>
@@ -48,17 +48,19 @@
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Min 6 chars, 1 uppercase, 1 number, 1 symbol" required>
+                <input type="password" name="password"
+                       placeholder="Min 6 chars, 1 uppercase, 1 number, 1 symbol" required>
             </div>
 
-            <button type="submit" class="btn-register">Register</button>
+            <button type="submit" class="btn-auth">Register</button>
 
         </form>
 
         <hr class="divider">
 
-        <div class="login-link">
-            Already have an account? <a href="${pageContext.request.contextPath}/login">Login here</a>
+        <div class="auth-link">
+            Already have an account?
+            <a href="${pageContext.request.contextPath}/login">Login here</a>
         </div>
 
     </div>
