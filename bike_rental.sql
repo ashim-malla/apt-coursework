@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS bike_rental;
+USE bike_rental;
+
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
