@@ -30,14 +30,9 @@
 
 1. Start **XAMPP** (Apache & MySQL)
 2. Open **phpMyAdmin**
-3. Create a database:
-
-   ```
-   bike_rental
-   ```
-4. Import the provided `.sql` file
-5. Start **Tomcat 10**
-6. Open browser:
+3. Import the provided `.sql` file
+4. Start **Tomcat 10**
+5. Open browser:
 
    ```
    http://localhost:8081/your_project_name
