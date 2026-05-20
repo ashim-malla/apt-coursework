@@ -6,10 +6,12 @@
 <html>
 <head>
     <title>Login - Pokhara Wheels</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/auth.css">
 </head>
 <body>
-
+	<jsp:include page="/utilities/navbar.jsp" />
     <div class="auth-container">
 
         <div class="auth-header">
@@ -28,12 +30,21 @@
 
             <div class="form-group">
                 <label>Email or User ID</label>
-                <input type="text" name="identifier" placeholder="Enter your email or user ID" required>
+                <input type="text" name="identifier"
+                       value="${savedEmail}"
+                       placeholder="Enter your email or user ID" required>
             </div>
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Enter your password" required>
+                <input type="password" name="password"
+                       placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-group-check">
+                <input type="checkbox" name="rememberMe" id="rememberMe"
+                       ${rememberMe ? 'checked' : ''}>
+                <label for="rememberMe">Remember me</label>
             </div>
 
             <button type="submit" class="btn-auth">Login</button>

@@ -6,10 +6,12 @@
 <html>
 <head>
     <title>Register - Pokhara Wheels</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/auth.css">
 </head>
 <body>
-
+	<jsp:include page="/utilities/navbar.jsp" />
     <div class="auth-container">
 
         <div class="auth-header">

@@ -6,37 +6,33 @@
 <html>
 <head>
     <title>Pokhara Wheels - Ride the City</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 </head>
 <body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            🏍️ Pokhara Wheels
-        </div>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#bikes">Our Bikes</a>
-            <a href="#about">About</a>
-            <a href="${pageContext.request.contextPath}/login" class="btn-nav-login">Login</a>
-            <a href="${pageContext.request.contextPath}/register" class="btn-nav-register">Register</a>
-        </div>
-    </nav>
-
+	<jsp:include page="/utilities/navbar.jsp" />
     <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Ride the Streets of <span>Pokhara</span></h1>
-            <p>Experience the thrill of premium superbikes. Rent by the hour, day, or week.</p>
-            <div class="hero-buttons">
-                <a href="${pageContext.request.contextPath}/register" class="btn-primary">Get Started</a>
-                <a href="#bikes" class="btn-secondary">View Bikes</a>
-            </div>
-        </div>
-    </section>
-
+	<section class="hero">
+	
+	    <img src="${pageContext.request.contextPath}/resources/image2.jpg"
+	         alt="Pokhara Bikes"
+	         class="hero-img">
+	
+	    <div class="hero-overlay">
+	
+	        <h1>Explore Pokhara on Two Wheels</h1>
+	
+	        <p>Rent premium bikes at the best price</p>
+	
+	        <a href="${pageContext.request.contextPath}/register"
+	           class="hero-btn">
+	            Book Now
+	        </a>
+	
+	    </div>
+	
+	</section>
     <!-- FEATURES SECTION -->
     <section class="features" id="features">
         <div class="section-title">
@@ -68,7 +64,7 @@
     </section>
 
     <!-- BIKES SECTION -->
-    <section class="bikes" id="bikes">
+    <section class="bikes" id="featured-bikes">
         <div class="section-title">
             <h2>Our Fleet</h2>
             <p>Pick your perfect ride</p>
@@ -137,7 +133,7 @@
                 <a href="${pageContext.request.contextPath}/login">Login</a>
                 <a href="${pageContext.request.contextPath}/register">Register</a>
                 <a href="#about">About</a>
-                <a href="#bikes">Bikes</a>
+                <a href="${pageContext.request.contextPath}/bikes">Bikes</a>
             </div>
         </div>
         <div class="footer-bottom">

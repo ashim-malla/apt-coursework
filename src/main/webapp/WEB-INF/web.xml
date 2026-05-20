@@ -7,18 +7,6 @@
 
     <display-name>APT Coursework - Bike Rental</display-name>
 
-    <!-- ===================== SERVLETS ===================== -->
-
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.coursework.controller.servlets.RegisterServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
-
     <!-- ===================== WELCOME FILE ===================== -->
 
     <welcome-file-list>

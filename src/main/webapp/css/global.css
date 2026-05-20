@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+html {
+    overflow-y: scroll;  
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    color: #1a1a1a;
+    scroll-behavior: smooth;
+}
