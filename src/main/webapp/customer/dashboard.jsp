@@ -22,7 +22,15 @@
                 <h1>Ready for your next ride, ${sessionScope.user.name}?</h1>
                 <p>Find available bikes, review your profile, and track your rental activity from one place.</p>
             </div>
-            <a class="hero-action" href="${pageContext.request.contextPath}/bikes">Browse Bikes</a>
+            <div class="form-actions">
+                <a class="hero-action" href="${pageContext.request.contextPath}/bikes">Browse Bikes</a>
+                <a class="btn-secondary profile-toggle-btn ${showProfile ? 'profile-toggle-active' : ''}" href="${pageContext.request.contextPath}/customer/dashboard?showProfile=true&currentShowProfile=${showProfile}&toggleProfile=true#profile">
+                    <c:choose>
+                        <c:when test="${showProfile}">Hide Personal Info</c:when>
+                        <c:otherwise>Personal Info</c:otherwise>
+                    </c:choose>
+                </a>
+            </div>
         </section>
 
         <section class="customer-stats">
@@ -31,8 +39,49 @@
                 <strong>${fn:length(availableBikes)}</strong>
             </div>
             <div class="customer-stat-card">
-                <span>Active Bookings</span>
-                <strong>${activeBookings}</strong>
+                <span>Booked Bikes</span>
+                <strong>${bookedBikes}</strong>
+            </div>
+            <div class="customer-stat-card">
+                <span>Pending Requests</span>
+                <strong>${pendingRequests}</strong>
+            </div>
+        </section>
+
+        <c:if test="${not empty sessionScope.message}">
+            <div class="success-message">${sessionScope.message}</div>
+            <c:remove var="message" scope="session" />
+        </c:if>
+
+        <section class="customer-panel" id="booked-bikes">
+            <div class="panel-heading">
+                <div>
+                    <h2>My Booked Bikes</h2>
+                    <p>These bikes are confirmed and approved by admin or staff.</p>
+                </div>
+            </div>
+
+            <div class="booked-bike-grid">
+                <c:choose>
+                    <c:when test="${empty bookedBikeBookings}">
+                        <div class="customer-empty">No booked bikes yet. Approved bookings will appear here.</div>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="booking" items="${bookedBikeBookings}">
+                            <article class="booked-bike-card">
+                                <div class="booked-bike-content">
+                                    <span class="bike-status status-approved">Booked</span>
+                                    <h3>${booking.bikeName}</h3>
+                                    <p>${booking.bikeBrand}</p>
+                                    <div class="booked-bike-meta">
+                                        <span>${booking.startDate} to ${booking.endDate}</span>
+                                        <strong>Rs. ${booking.totalAmount}</strong>
+                                    </div>
+                                </div>
+                            </article>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </section>
 
@@ -64,7 +113,7 @@
                                     <span class="bike-status">${bike.status}</span>
                                 </div>
                                 <h3>${bike.name}</h3>
-                                <p class="bike-brand">${bike.brand} - ${bike.registrationNumber}</p>
+                                <p class="bike-brand">${bike.brand}</p>
                                 <p class="bike-description">${bike.description}</p>
                                 <div class="bike-card-bottom">
                                     <div>
@@ -105,7 +154,16 @@
                                         <h3>${booking.bikeName}</h3>
                                         <p>${booking.startDate} to ${booking.endDate}</p>
                                     </div>
-                                    <span class="bike-status status-${booking.bookingStatus}">${booking.bookingStatus}</span>
+                                    <span class="bike-status status-${booking.bookingStatus}">
+                                        <c:choose>
+                                            <c:when test="${booking.bookingStatus == 'approved'}">Booked</c:when>
+                                            <c:when test="${booking.bookingStatus == 'pending'}">Pending</c:when>
+                                            <c:when test="${booking.bookingStatus == 'rejected'}">Rejected</c:when>
+                                            <c:when test="${booking.bookingStatus == 'completed'}">Completed</c:when>
+                                            <c:when test="${booking.bookingStatus == 'cancelled'}">Cancelled</c:when>
+                                            <c:otherwise>${booking.bookingStatus}</c:otherwise>
+                                        </c:choose>
+                                    </span>
                                 </article>
                             </c:forEach>
                         </div>
@@ -114,15 +172,58 @@
                 </c:choose>
             </div>
 
-            <div class="customer-panel" id="profile">
+            <c:if test="${showProfile}">
+            <div class="customer-panel profile-panel" id="profile">
                 <h2>Profile</h2>
-                <div class="profile-list">
-                    <p><span>Name</span><strong>${sessionScope.user.name}</strong></p>
-                    <p><span>Email</span><strong>${sessionScope.user.email}</strong></p>
-                    <p><span>Phone</span><strong>${sessionScope.user.phone}</strong></p>
-                    <p><span>License</span><strong>${sessionScope.user.licenseNumber}</strong></p>
-                </div>
+                <c:choose>
+                    <c:when test="${editProfile}">
+                        <form class="admin-form" action="${pageContext.request.contextPath}/account/profile" method="post">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" name="name" value="${sessionScope.user.name}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" value="${sessionScope.user.email}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" name="phone" value="${sessionScope.user.phone}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>License Number</label>
+                                    <input type="text" name="licenseNumber" value="${sessionScope.user.licenseNumber}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password (optional)</label>
+                                    <input type="password" name="newPassword" placeholder="Leave blank to keep current password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <input type="password" name="confirmPassword" placeholder="Retype new password">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-update">Save Changes</button>
+                                <a class="btn-secondary" href="${pageContext.request.contextPath}/customer/dashboard?showProfile=true#profile">Cancel</a>
+                            </div>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="profile-list">
+                            <p><span>Name</span><strong>${sessionScope.user.name}</strong></p>
+                            <p><span>Email</span><strong>${sessionScope.user.email}</strong></p>
+                            <p><span>Phone</span><strong>${sessionScope.user.phone}</strong></p>
+                            <p><span>License</span><strong>${sessionScope.user.licenseNumber}</strong></p>
+                        </div>
+                        <div class="form-actions">
+                            <a class="btn-update" href="${pageContext.request.contextPath}/customer/dashboard?showProfile=true&editProfile=true#profile">Edit Info</a>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
+            </c:if>
         </section>
     </main>
     <jsp:include page="/utilities/footer.jsp" />

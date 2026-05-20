@@ -33,7 +33,7 @@
                     <span class="bike-status status-${bike.status}">${bike.status}</span>
                 </div>
                 <h3>${bike.name}</h3>
-                <p class="bike-brand">${bike.brand} - ${bike.registrationNumber}</p>
+                <p class="bike-brand">${bike.brand}</p>
                 <p class="bike-description">${bike.description}</p>
                 <div class="bike-card-bottom">
                     <div>

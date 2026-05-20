@@ -33,10 +33,10 @@
                     <h2>Bike Collection</h2>
                     <p>Check the bike type, brand, price, and current status before booking.</p>
                 </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Search by bike, brand, or type">
-                    <button type="button">Search</button>
-                </div>
+                <form class="search-box" method="get" action="${pageContext.request.contextPath}/bikes" autocomplete="off">
+                    <input type="text" name="q" value="${searchQuery}" placeholder="Search by bike, brand, or type" autocomplete="off">
+                    <button type="submit">Search</button>
+                </form>
             </div>
 
             <div class="customer-bike-grid">
@@ -55,7 +55,7 @@
                                     <span class="bike-status status-${bike.status}">${bike.status}</span>
                                 </div>
                                 <h3>${bike.name}</h3>
-                                <p class="bike-brand">${bike.brand} - ${bike.registrationNumber}</p>
+                                <p class="bike-brand">${bike.brand}</p>
                                 <p class="bike-description">${bike.description}</p>
                                 <div class="bike-card-bottom">
                                     <div>

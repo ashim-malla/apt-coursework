@@ -170,6 +170,16 @@
     background: #1a1a1a;
 }
 
+.profile-toggle-btn {
+    border-color: #f5caca;
+}
+
+.profile-toggle-active {
+    background: #ffecec;
+    border-color: #cc0000;
+    color: #b00000;
+}
+
 .customer-bike-card::after {
     content: "";
     position: absolute;
@@ -324,6 +334,50 @@
     gap: 12px;
 }
 
+.booked-bike-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.booked-bike-card {
+    min-height: 180px;
+    border-radius: 12px;
+    border: 1px solid #eeeeee;
+    background: #fcfcfc;
+    display: flex;
+    align-items: stretch;
+}
+
+.booked-bike-content {
+    width: 100%;
+    padding: 18px;
+    color: #1a1a1a;
+}
+
+.booked-bike-content h3 {
+    margin: 14px 0 5px;
+    font-size: 18px;
+}
+
+.booked-bike-content p,
+.booked-bike-meta span {
+    color: #777777;
+    font-size: 13px;
+}
+
+.booked-bike-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.booked-bike-meta strong {
+    color: #cc0000;
+}
+
 .booking-card {
     display: grid;
     grid-template-columns: 1.3fr 1fr 0.7fr auto;
@@ -403,6 +457,7 @@
 
     .customer-stats,
     .customer-bike-grid,
+    .booked-bike-grid,
     .customer-two-column,
     .booking-card {
         grid-template-columns: 1fr;

@@ -48,6 +48,8 @@
     padding: 100px 60px 40px;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    flex: 1;
 }
 
 .admin-title {
@@ -90,6 +92,16 @@
 
 .admin-table tr:hover td {
     background: #fff5f5;
+}
+
+.admin-table td a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.admin-table td a:hover,
+.admin-table td a:focus {
+    text-decoration: none;
 }
 
 /* ===== BADGES ===== */
@@ -193,6 +205,7 @@
     cursor: pointer;
     margin-left: 8px;
     transition: background 0.2s;
+    text-decoration: none;
 }
 
 .btn-update:hover {
@@ -566,6 +579,12 @@
     box-shadow: 0 4px 15px rgba(204, 0, 0, 0.08);
 }
 
+.action-card-active {
+    border-color: #cc0000;
+    box-shadow: 0 4px 15px rgba(204, 0, 0, 0.12);
+    background: #fffafa;
+}
+
 .action-icon {
     font-size: 28px;
     width: 48px;
@@ -598,4 +617,68 @@
     font-size: 18px;
     color: #cc0000;
     font-weight: 700;
+}
+
+.profile-panel {
+    border: 1px solid #f0dada;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.profile-panel .form-grid {
+    gap: 20px;
+}
+
+.profile-panel .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-panel .form-group label {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.profile-panel .form-group input {
+    padding: 12px 12px;
+}
+
+.profile-panel .form-actions {
+    margin-top: 6px;
+    gap: 12px;
+}
+
+.profile-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+
+    padding: 18px;
+}
+
+.profile-list p {
+    margin: 0;
+
+    background: #fff5f5;
+    border: 1px solid #ffe0e0;
+    border-radius: 10px;
+
+    padding: 12px 14px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-list p span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #cc0000;
+}
+
+.profile-list p strong {
+    font-size: 14px;
+    color: #1a1a1a;
 }

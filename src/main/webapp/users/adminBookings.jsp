@@ -47,7 +47,7 @@
                             <c:if test="${fn:toLowerCase(fn:trim(booking.bookingStatus)) != 'completed'}">
                                 <c:set var="visibleBookingCount" value="${visibleBookingCount + 1}" />
                                 <tr>
-                                    <td>${booking.bookingId}</td>
+                                    <td>${booking.bookingeId}</td>
                                     <td>
                                         <strong>${booking.customerName}</strong>
                                         <span class="table-subtext">${booking.customerEmail}</span>

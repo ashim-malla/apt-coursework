@@ -1,6 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page isELIgnored="false" %>
+<%
+    if (request.getAttribute("featuredBikes") == null) {
+        response.sendRedirect(request.getContextPath() + "/home");
+        return;
+    }
+%>
 
 <!DOCTYPE html>
 <html>

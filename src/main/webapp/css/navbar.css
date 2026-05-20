@@ -89,66 +89,6 @@
     text-transform: uppercase;
 }
 
-/* ===== SHARED FOOTER ===== */
-.footer {
-    background: #1a1a1a;
-    padding: 50px 60px 20px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto 30px;
-}
-
-.footer-brand {
-    font-size: 20px;
-    font-weight: 800;
-    color: #cc0000;
-}
-
-.footer-brand p {
-    font-size: 13px;
-    color: #888888;
-    font-weight: 400;
-    margin-top: 5px;
-}
-
-.footer-links {
-    display: flex;
-    gap: 25px;
-}
-
-.footer-links a {
-    color: #888888;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-}
-
-.footer-links a:hover {
-    color: #cc0000;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #333333;
-    color: #666666;
-    font-size: 13px;
-}
-
 @media (max-width: 720px) {
-    .footer {
-        padding: 36px 22px 18px;
-    }
-
-    .footer-content,
-    .footer-links {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 14px;
-    }
+    
 }

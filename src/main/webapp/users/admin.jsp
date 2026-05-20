@@ -48,7 +48,7 @@
                             <tr>
                                 <td>${u.userId}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/admin/users?viewCustomerId=${u.userId}">
+                                    <a href="${pageContext.request.contextPath}/admin/users?viewCustomerId=${u.userId}&currentCustomerId=${selectedCustomerId}&toggleCustomer=true">
                                         ${u.name}
                                     </a>
                                 </td>

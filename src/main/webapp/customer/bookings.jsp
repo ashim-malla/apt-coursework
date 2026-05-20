@@ -40,7 +40,7 @@
                             <article class="booking-card">
                                 <div>
                                     <h3>${booking.bikeName}</h3>
-                                    <p>${booking.bikeBrand} - ${booking.registrationNumber}</p>
+                                    <p>${booking.bikeBrand}</p>
                                 </div>
                                 <div>
                                     <span class="price-label">Rental Dates</span>
@@ -50,7 +50,16 @@
                                     <span class="price-label">Total</span>
                                     <strong>Rs. ${booking.totalAmount}</strong>
                                 </div>
-                                <span class="bike-status status-${booking.bookingStatus}">${booking.bookingStatus}</span>
+                                <span class="bike-status status-${booking.bookingStatus}">
+                                    <c:choose>
+                                        <c:when test="${booking.bookingStatus == 'approved'}">Booked</c:when>
+                                        <c:when test="${booking.bookingStatus == 'pending'}">Pending</c:when>
+                                        <c:when test="${booking.bookingStatus == 'rejected'}">Rejected</c:when>
+                                        <c:when test="${booking.bookingStatus == 'completed'}">Completed</c:when>
+                                        <c:when test="${booking.bookingStatus == 'cancelled'}">Cancelled</c:when>
+                                        <c:otherwise>${booking.bookingStatus}</c:otherwise>
+                                    </c:choose>
+                                </span>
                             </article>
                         </c:forEach>
                     </c:otherwise>

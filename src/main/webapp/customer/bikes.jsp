@@ -32,12 +32,12 @@
             <div class="panel-heading">
                 <div>
                     <h2>Choose Your Bike</h2>
-                    <p>Compare brand, type, registration number, and daily rental price.</p>
+                    <p>Compare brand, type, and daily rental price.</p>
                 </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Search by bike, brand, or type">
-                    <button type="button">Search</button>
-                </div>
+                <form class="search-box" method="get" action="${pageContext.request.contextPath}/customer/bikes" autocomplete="off">
+                    <input type="text" name="q" value="${searchQuery}" placeholder="Search by bike, brand, or type" autocomplete="off">
+                    <button type="submit">Search</button>
+                </form>
             </div>
 
             <div class="customer-bike-grid">
@@ -56,7 +56,7 @@
                                     <span class="bike-status">${bike.status}</span>
                                 </div>
                                 <h3>${bike.name}</h3>
-                                <p class="bike-brand">${bike.brand} - ${bike.registrationNumber}</p>
+                                <p class="bike-brand">${bike.brand}</p>
                                 <p class="bike-description">${bike.description}</p>
                                 <div class="bike-card-bottom">
                                     <div>
