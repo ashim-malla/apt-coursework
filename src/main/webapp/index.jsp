@@ -70,42 +70,36 @@
             <p>Pick your perfect ride</p>
         </div>
         <div class="bikes-grid">
-            <div class="bike-card">
-                <div class="bike-img">🏍️</div>
-                <div class="bike-info">
-                    <h3>Kawasaki Ninja</h3>
-                    <p>Sport • 650cc</p>
-                    <div class="bike-price">Rs. 2500<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
-                </div>
-            </div>
-            <div class="bike-card">
-                <div class="bike-img">🏍️</div>
-                <div class="bike-info">
-                    <h3>Yamaha R15</h3>
-                    <p>Sport • 155cc</p>
-                    <div class="bike-price">Rs. 1500<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
-                </div>
-            </div>
-            <div class="bike-card">
-                <div class="bike-img">🏍️</div>
-                <div class="bike-info">
-                    <h3>Royal Enfield</h3>
-                    <p>Cruiser • 350cc</p>
-                    <div class="bike-price">Rs. 2000<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
-                </div>
-            </div>
-            <div class="bike-card">
-                <div class="bike-img">🏍️</div>
-                <div class="bike-info">
-                    <h3>KTM Duke</h3>
-                    <p>Naked • 390cc</p>
-                    <div class="bike-price">Rs. 2200<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
-                </div>
-            </div>
+            <c:choose>
+                <c:when test="${empty featuredBikes}">
+                    <div class="bike-empty">No bikes are available right now.</div>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="bike" items="${featuredBikes}" varStatus="status">
+                        <c:if test="${status.index < 4}">
+                            <div class="bike-card">
+                                <div class="bike-img">🏍️</div>
+                                <div class="bike-info">
+                                    <h3>${bike.name}</h3>
+                                    <p>${bike.brand} • ${bike.type}</p>
+                                    <div class="bike-price">Rs. ${bike.pricePerDay}<span>/day</span></div>
+                                    <c:choose>
+                                        <c:when test="${not empty sessionScope.user && sessionScope.role == 'customer'}">
+                                            <a href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}" class="btn-book">Book Now</a>
+                                        </c:when>
+                                        <c:when test="${not empty sessionScope.user && sessionScope.role != 'customer'}">
+                                            <span class="btn-book-disabled">Customers Only</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="${pageContext.request.contextPath}/login" class="btn-book">Book Now</a>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </div>
     </section>
 
