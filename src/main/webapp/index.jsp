@@ -25,7 +25,7 @@
 	
 	        <p>Rent premium bikes at the best price</p>
 	
-	        <a href="${pageContext.request.contextPath}/register"
+	        <a href="${pageContext.request.contextPath}/bikes"
 	           class="hero-btn">
 	            Book Now
 	        </a>
@@ -76,7 +76,7 @@
                     <h3>Kawasaki Ninja</h3>
                     <p>Sport • 650cc</p>
                     <div class="bike-price">Rs. 2500<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/register" class="btn-book">Book Now</a>
+                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
                 </div>
             </div>
             <div class="bike-card">
@@ -85,7 +85,7 @@
                     <h3>Yamaha R15</h3>
                     <p>Sport • 155cc</p>
                     <div class="bike-price">Rs. 1500<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/register" class="btn-book">Book Now</a>
+                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
                 </div>
             </div>
             <div class="bike-card">
@@ -94,7 +94,7 @@
                     <h3>Royal Enfield</h3>
                     <p>Cruiser • 350cc</p>
                     <div class="bike-price">Rs. 2000<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/register" class="btn-book">Book Now</a>
+                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
                 </div>
             </div>
             <div class="bike-card">
@@ -103,7 +103,7 @@
                     <h3>KTM Duke</h3>
                     <p>Naked • 390cc</p>
                     <div class="bike-price">Rs. 2200<span>/day</span></div>
-                    <a href="${pageContext.request.contextPath}/register" class="btn-book">Book Now</a>
+                    <a href="${pageContext.request.contextPath}/bikes" class="btn-book">Book Now</a>
                 </div>
             </div>
         </div>

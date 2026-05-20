@@ -30,22 +30,22 @@
 
             <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" name="name" placeholder="Enter your name" required>
+                <input type="text" name="name" value="${name}" placeholder="Enter your full name" required>
             </div>
 
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="email" name="email" value="${email}" placeholder="Enter your email" required>
             </div>
 
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="text" name="phone" placeholder="Enter your phone" required>
+                <input type="text" name="phone" value="${phone}" placeholder="98XXXXXXXX" required>
             </div>
 
             <div class="form-group">
                 <label>License Number</label>
-                <input type="text" name="license_number" placeholder="Enter license number (optional)">
+                <input type="text" name="license_number" value="${license}" placeholder="Enter license number (optional)">
             </div>
 
             <div class="form-group">

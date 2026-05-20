@@ -34,10 +34,6 @@
                 <span>Active Bookings</span>
                 <strong>${activeBookings}</strong>
             </div>
-            <div class="customer-stat-card">
-                <span>Wishlist</span>
-                <strong>0</strong>
-            </div>
         </section>
 
         <section class="customer-panel" id="available-bikes">
@@ -72,7 +68,14 @@
                                         <span class="price-label">Per day</span>
                                         <strong>Rs. ${bike.pricePerDay}</strong>
                                     </div>
-                                    <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.role == 'customer'}">
+                                            <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button type="button" class="btn-disabled" disabled>Customers Only</button>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </article>
                         </c:forEach>

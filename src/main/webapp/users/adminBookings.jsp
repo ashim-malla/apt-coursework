@@ -60,7 +60,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <form class="booking-status-form" action="${pageContext.request.contextPath}/admin/bookings" method="post">
+                                    <form class="booking-status-form" action="${pageContext.request.requestURI}" method="post">
                                         <input type="hidden" name="bookingId" value="${booking.bookingId}">
                                         <select name="bookingStatus" class="role-select">
                                             <option value="pending" ${booking.bookingStatus == 'pending' ? 'selected' : ''}>Pending</option>

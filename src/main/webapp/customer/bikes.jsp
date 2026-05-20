@@ -60,7 +60,14 @@
                                         <span class="price-label">Per day</span>
                                         <strong>Rs. ${bike.pricePerDay}</strong>
                                     </div>
-                                    <button type="button">Book</button>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.role == 'customer'}">
+                                            <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button type="button" class="btn-disabled" disabled>Customers Only</button>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </article>
                         </c:forEach>

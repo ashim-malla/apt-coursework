@@ -41,13 +41,13 @@
 
         <h3 class="section-heading">Staff Tasks To Build Next</h3>
         <div class="quick-actions">
-            <div class="action-card">
+            <a class="action-card" href="${pageContext.request.contextPath}/staff/bookings">
                 <div class="action-icon">1</div>
                 <div class="action-info">
-                    <h4>Confirm Handover</h4>
-                    <p>Mark approved bookings as handed over to customers.</p>
+                    <h4>Manage Bookings</h4>
+                    <p>Approve, reject, complete, or cancel customer booking requests.</p>
                 </div>
-            </div>
+            </a>
             <div class="action-card">
                 <div class="action-icon">2</div>
                 <div class="action-info">
