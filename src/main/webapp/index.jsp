@@ -84,6 +84,9 @@
                                     <p>${bike.brand} • ${bike.type}</p>
                                     <div class="bike-price">Rs. ${bike.pricePerDay}<span>/day</span></div>
                                     <c:choose>
+                                        <c:when test="${bike.status != 'available'}">
+                                            <span class="btn-book-disabled">Unavailable</span>
+                                        </c:when>
                                         <c:when test="${not empty sessionScope.user && sessionScope.role == 'customer'}">
                                             <a href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}" class="btn-book">Book Now</a>
                                         </c:when>
