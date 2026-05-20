@@ -25,9 +25,10 @@
             <div class="error-message">${error}</div>
         </c:if>
 
-        <form class="admin-form" action="${pageContext.request.contextPath}/admin/bikes" method="post">
+        <form id="bikeForm" class="admin-form" action="${bikeActionPath}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="action" value="${empty editBike ? 'add' : 'update'}">
             <input type="hidden" name="bikeId" value="${editBike.bikeId}">
+            <input type="hidden" name="existingImagePath" value="${editBike.imagePath}">
 
             <div class="form-grid">
                 <div class="form-group">
@@ -64,7 +65,18 @@
                         <option value="maintenance" ${editBike.status == 'maintenance' ? 'selected' : ''}>Maintenance</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label>Bike Photo</label>
+                    <input type="file" name="bikeImage" accept="image/*">
+                </div>
             </div>
+
+            <c:if test="${not empty editBike.imagePath}">
+                <div class="form-group">
+                    <label>Current Photo</label>
+                    <img class="admin-bike-preview" src="${pageContext.request.contextPath}/${editBike.imagePath}" alt="${editBike.name}">
+                </div>
+            </c:if>
 
             <div class="form-group">
                 <label>Description</label>
@@ -74,7 +86,7 @@
             <div class="form-actions">
                 <button type="submit" class="btn-update">${empty editBike ? 'Add Bike' : 'Update Bike'}</button>
                 <c:if test="${not empty editBike}">
-                    <a class="btn-secondary" href="${pageContext.request.contextPath}/admin/bikes">Cancel Edit</a>
+                    <a class="btn-secondary" href="${bikeActionPath}">Cancel Edit</a>
                 </c:if>
             </div>
         </form>
@@ -84,6 +96,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Photo</th>
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Type</th>
@@ -97,13 +110,23 @@
                 <c:choose>
                     <c:when test="${empty bikes}">
                         <tr>
-                            <td colspan="8" style="text-align:center; color:#888;">No bikes found</td>
+                            <td colspan="9" style="text-align:center; color:#888;">No bikes found</td>
                         </tr>
                     </c:when>
                     <c:otherwise>
                         <c:forEach var="bike" items="${bikes}">
                             <tr>
                                 <td>${bike.bikeId}</td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${not empty bike.imagePath}">
+                                            <img class="admin-bike-thumb" src="${pageContext.request.contextPath}/${bike.imagePath}" alt="${bike.name}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="admin-bike-placeholder">No photo</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
                                 <td>${bike.name}</td>
                                 <td>${bike.brand}</td>
                                 <td>${bike.type}</td>
@@ -111,8 +134,8 @@
                                 <td>Rs. ${bike.pricePerDay}</td>
                                 <td><span class="badge badge-${bike.status}">${bike.status}</span></td>
                                 <td class="table-actions">
-                                    <a class="btn-secondary" href="${pageContext.request.contextPath}/admin/bikes?editId=${bike.bikeId}">Edit</a>
-                                    <form action="${pageContext.request.contextPath}/admin/bikes" method="post">
+                                    <a class="btn-secondary" href="${bikeActionPath}?editId=${bike.bikeId}#bikeForm">Edit</a>
+                                    <form action="${bikeActionPath}" method="post">
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="bikeId" value="${bike.bikeId}">
                                         <button class="btn-delete" type="submit">Delete</button>

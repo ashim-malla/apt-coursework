@@ -158,10 +158,55 @@
 }
 
 .customer-bike-card {
-    border: 1px solid #eeeeee;
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid #222222;
     border-radius: 12px;
     padding: 18px;
-    background: #fcfcfc;
+    background: #1a1a1a;
+}
+
+.customer-bike-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.34) 42%,
+        rgba(0, 0, 0, 0.88) 100%
+    );
+    z-index: 1;
+}
+
+.customer-bike-card > *:not(.customer-bike-photo) {
+    position: relative;
+    z-index: 2;
+}
+
+.customer-bike-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 66%;
+    object-fit: contain;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #111111;
+    z-index: 0;
+}
+
+.customer-bike-photo.large {
+    height: 66%;
+}
+
+.customer-bike-card > *:not(.customer-bike-photo) {
+    width: 100%;
 }
 
 .bike-card-top,
@@ -183,13 +228,13 @@
 }
 
 .bike-type {
-    background: #f4f4f4;
-    color: #444444;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
 }
 
 .bike-status {
-    background: #f0fff4;
-    color: #2e7d32;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
 }
 
 .status-rented {
@@ -224,14 +269,15 @@
 }
 
 .customer-bike-card h3 {
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 20px;
     margin: 18px 0 6px;
 }
 
 .bike-brand,
 .bike-description,
 .price-label {
-    color: #777777;
+    color: #e2e2e2;
     font-size: 13px;
 }
 
@@ -242,13 +288,13 @@
 
 .bike-card-bottom strong {
     display: block;
-    color: #cc0000;
+    color: #ffffff;
     font-size: 18px;
 }
 
 .bike-card-bottom .btn-disabled {
-    background: #dddddd;
-    color: #777777;
+    background: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
     cursor: not-allowed;
 }
 

@@ -51,9 +51,10 @@
             <div class="action-card">
                 <div class="action-icon">2</div>
                 <div class="action-info">
-                    <h4>Confirm Return</h4>
-                    <p>Update bike condition and availability after return.</p>
+                    <h4>Manage Bikes</h4>
+                    <p>Edit bike details, availability, and uploaded bike photos.</p>
                 </div>
+                <a class="text-link" href="${pageContext.request.contextPath}/staff/bikes">Open bikes</a>
             </div>
         </div>
     </div>

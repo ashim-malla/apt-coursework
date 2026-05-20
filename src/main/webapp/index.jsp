@@ -78,7 +78,14 @@
                     <c:forEach var="bike" items="${featuredBikes}" varStatus="status">
                         <c:if test="${status.index < 4}">
                             <div class="bike-card">
-                                <div class="bike-img">🏍️</div>
+                                <c:choose>
+                                    <c:when test="${not empty bike.imagePath}">
+                                        <img class="bike-img bike-photo" src="${pageContext.request.contextPath}/${bike.imagePath}" alt="${bike.name}">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="bike-img">🏍️</div>
+                                    </c:otherwise>
+                                </c:choose>
                                 <div class="bike-info">
                                     <h3>${bike.name}</h3>
                                     <p>${bike.brand} • ${bike.type}</p>

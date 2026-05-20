@@ -48,6 +48,9 @@
                     <c:otherwise>
                         <c:forEach var="bike" items="${availableBikes}">
                             <article class="customer-bike-card">
+                                <c:if test="${not empty bike.imagePath}">
+                                    <img class="customer-bike-photo" src="${pageContext.request.contextPath}/${bike.imagePath}" alt="${bike.name}">
+                                </c:if>
                                 <div class="bike-card-top">
                                     <span class="bike-type">${bike.type}</span>
                                     <span class="bike-status">${bike.status}</span>

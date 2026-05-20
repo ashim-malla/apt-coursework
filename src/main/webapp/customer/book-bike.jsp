@@ -25,6 +25,9 @@
 
         <section class="customer-two-column">
             <article class="customer-bike-card booking-bike-summary">
+                <c:if test="${not empty bike.imagePath}">
+                    <img class="customer-bike-photo large" src="${pageContext.request.contextPath}/${bike.imagePath}" alt="${bike.name}">
+                </c:if>
                 <div class="bike-card-top">
                     <span class="bike-type">${bike.type}</span>
                     <span class="bike-status status-${bike.status}">${bike.status}</span>

@@ -294,6 +294,29 @@
     gap: 8px;
 }
 
+.admin-bike-thumb {
+    width: 72px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eeeeee;
+    display: block;
+}
+
+.admin-bike-preview {
+    width: 180px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eeeeee;
+    display: block;
+}
+
+.admin-bike-placeholder {
+    color: #888888;
+    font-size: 12px;
+}
+
 .bike-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
