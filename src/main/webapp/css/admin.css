@@ -147,6 +147,25 @@
     color: #1a237e;
 }
 
+.badge-approved,
+.badge-completed {
+    background: #f0fff4;
+    color: #2e7d32;
+}
+
+.badge-rejected,
+.badge-cancelled {
+    background: #fff0f0;
+    color: #cc0000;
+}
+
+.table-subtext {
+    display: block;
+    color: #888888;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
 /* ===== ROLE SELECT ===== */
 .role-select {
     padding: 6px 10px;
@@ -267,6 +286,12 @@
 
 .table-actions form {
     display: inline;
+}
+
+.booking-status-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .bike-grid {

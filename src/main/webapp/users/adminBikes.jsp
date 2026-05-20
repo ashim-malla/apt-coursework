@@ -7,10 +7,11 @@
 <head>
     <title>Manage Bikes - Pokhara Wheels</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 </head>
 <body>
-    <jsp:include page="/utilities/admin-navbar.jsp" />
+    <jsp:include page="/utilities/navbar.jsp" />
 
     <div class="admin-content">
         <h2 class="admin-title">Manage Bikes</h2>
@@ -124,5 +125,6 @@
             </tbody>
         </table>
     </div>
+    <jsp:include page="/utilities/footer.jsp" />
 </body>
 </html>

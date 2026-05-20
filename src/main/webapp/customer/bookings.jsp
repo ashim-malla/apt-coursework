@@ -7,11 +7,12 @@
 <head>
     <title>My Bookings - Pokhara Wheels</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/customer.css">
 </head>
 <body>
-    <jsp:include page="/utilities/customer-navbar.jsp" />
+    <jsp:include page="/utilities/navbar.jsp" />
 
     <main class="customer-shell">
         <section class="customer-page-heading">
@@ -57,5 +58,6 @@
             </div>
         </section>
     </main>
+    <jsp:include page="/utilities/footer.jsp" />
 </body>
 </html>

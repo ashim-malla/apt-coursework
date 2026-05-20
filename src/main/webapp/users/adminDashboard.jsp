@@ -7,23 +7,11 @@
 <head>
     <title>Admin Dashboard - Pokhara Wheels</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 </head>
 <body>
-    <jsp:include page="/utilities/admin-navbar.jsp" />
-
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-brand">🏍️ Pokhara Wheels</div>
-        <div class="nav-links">
-            <a href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
-            <a href="${pageContext.request.contextPath}/admin/users">Users</a>
-            <a href="${pageContext.request.contextPath}/admin/bikes">Bikes</a>
-            <a href="${pageContext.request.contextPath}/admin/bookings">Bookings</a>
-            <a href="${pageContext.request.contextPath}/logout" class="btn-nav-login">Logout</a>
-        </div>
-    </nav>
+    <jsp:include page="/utilities/navbar.jsp" />
 
     <div class="admin-content">
 
@@ -66,11 +54,29 @@
             <div class="stat-card">
                 <div class="stat-icon" style="background:#f0f4ff; color:#1a237e;">💰</div>
                 <div class="stat-info">
-                    <p class="stat-label">Total Revenue</p>
-                    <p class="stat-value">Rs. 0</p>
+                    <p class="stat-label">Total Bookings</p>
+                    <p class="stat-value">${totalBookings}</p>
                 </div>
             </div>
 
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background:#fff8e1; color:#f57c00;">P</div>
+                <div class="stat-info">
+                    <p class="stat-label">Pending Bookings</p>
+                    <p class="stat-value">${pendingBookings}</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background:#f0fff4; color:#2e7d32;">Rs</div>
+                <div class="stat-info">
+                    <p class="stat-label">Revenue</p>
+                    <p class="stat-value">Rs. ${totalRevenue}</p>
+                </div>
+            </div>
         </div>
 
         <!-- QUICK ACTIONS -->
@@ -179,5 +185,6 @@
             });
     </script>
 
+    <jsp:include page="/utilities/footer.jsp" />
 </body>
 </html>

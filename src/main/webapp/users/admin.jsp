@@ -7,21 +7,11 @@
 <head>
     <title>Manage Users - Pokhara Wheels</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 </head>
 <body>
-    <jsp:include page="/utilities/admin-navbar.jsp" />
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-brand">🏍️ Pokhara Wheels</div>
-        <div class="nav-links">
-            <a href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
-            <a href="${pageContext.request.contextPath}/admin/users">Manage Users</a>
-            <a href="${pageContext.request.contextPath}/admin/bikes">Manage Bikes</a>
-            <a href="${pageContext.request.contextPath}/logout" class="btn-nav-login">Logout</a>
-        </div>
-    </nav>
+    <jsp:include page="/utilities/navbar.jsp" />
 
     <div class="admin-content">
         <h2 class="admin-title">Manage Users</h2>
@@ -107,5 +97,6 @@
         </table>
     </div>
 
+    <jsp:include page="/utilities/footer.jsp" />
 </body>
 </html>

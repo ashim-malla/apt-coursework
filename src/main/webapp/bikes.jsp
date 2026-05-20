@@ -82,5 +82,6 @@
             </div>
         </section>
     </main>
+    <jsp:include page="/utilities/footer.jsp" />
 </body>
 </html>

@@ -7,16 +7,12 @@
 <head>
     <title>Staff Dashboard - Pokhara Wheels</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">Pokhara Wheels</div>
-        <div class="nav-links">
-            <a href="${pageContext.request.contextPath}/staff/dashboard">Dashboard</a>
-            <a href="${pageContext.request.contextPath}/logout" class="btn-nav-login">Logout</a>
-        </div>
-    </nav>
+    
+    <jsp:include page="/utilities/navbar.jsp" />
 
     <div class="admin-content">
         <div class="admin-welcome">
@@ -61,5 +57,6 @@
             </div>
         </div>
     </div>
+    <jsp:include page="/utilities/footer.jsp" />
 </body>
 </html>
