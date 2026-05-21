@@ -115,7 +115,6 @@
                                 </div>
                                 <h3>${bike.name}</h3>
                                 <p class="bike-brand">${bike.brand}</p>
-                                <p class="bike-description">${bike.description}</p>
                                 <div class="bike-card-bottom">
                                     <div>
                                         <span class="price-label">Per day</span>

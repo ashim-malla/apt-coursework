@@ -122,6 +122,13 @@
                     <p>Edit bike details, availability, and uploaded bike photos.</p>
                 </div>
             </a>
+            <a class="action-card" href="${pageContext.request.contextPath}/staff/bookings?history=true">
+                <div class="action-icon">History</div>
+                <div class="action-info">
+                    <h4>Bike Rent History</h4>
+                    <p>Open the full rental history page.</p>
+                </div>
+            </a>
             <a class="action-card" href="${pageContext.request.contextPath}/staff/dashboard#recent-payments">
                 <div class="action-icon">Rs</div>
                 <div class="action-info">

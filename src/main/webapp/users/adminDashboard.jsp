@@ -83,14 +83,6 @@
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon" style="background:#f0f4ff; color:#1a237e;">$</div>
-                <div class="stat-info">
-                    <p class="stat-label">Payment Records</p>
-                    <p class="stat-value">${totalPayments}</p>
-                </div>
-            </div>
-
-            <div class="stat-card">
                 <div class="stat-icon" style="background:#f0fff4; color:#2e7d32;">Paid</div>
                 <div class="stat-info">
                     <p class="stat-label">Paid Payments</p>
@@ -105,7 +97,7 @@
 
             <a href="${pageContext.request.contextPath}/admin/users"
                class="action-card">
-                <div class="action-icon">Users</div>
+                <div class="action-icon">U</div>
                 <div class="action-info">
                     <h4>Manage Users</h4>
                     <p>View, edit, or change user roles</p>
@@ -131,6 +123,15 @@
                     <p>View and manage all bookings</p>
                 </div>
                 <div class="action-arrow">→</div>
+            </a>
+            <a href="${pageContext.request.contextPath}/admin/bookings?history=true"
+               class="action-card">
+                <div class="action-icon">H</div>
+                <div class="action-info">
+                    <h4>Bike Rent History</h4>
+                    <p>Open the full rental history page.</p>
+                </div>
+                <div class="action-arrow">â†’</div>
             </a>
             <a href="${pageContext.request.contextPath}/admin/dashboard#recent-payments"
                class="action-card">

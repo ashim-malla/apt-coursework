@@ -45,56 +45,54 @@
                     <c:otherwise>
                         <c:set var="visibleBookingCount" value="0" />
                         <c:forEach var="booking" items="${bookings}">
-                            <c:if test="${fn:toLowerCase(fn:trim(booking.bookingStatus)) != 'completed'}">
-                                <c:set var="visibleBookingCount" value="${visibleBookingCount + 1}" />
-                                <tr>
-                                    <td>${booking.bookingId}</td>
-                                    <td>
-                                        <strong>${booking.customerName}</strong>
-                                        <span class="table-subtext">${booking.customerEmail}</span>
-                                    </td>
-                                    <td>
-                                        <strong>${booking.bikeName}</strong>
-                                        <span class="table-subtext">${booking.bikeBrand} - ${booking.registrationNumber}</span>
-                                    </td>
-                                    <td>${booking.startDate} to ${booking.endDate}</td>
-                                    <td>Rs. ${booking.totalAmount}</td>
-                                    <td>
-                                        <span class="badge badge-${booking.bookingStatus}">
-                                            ${booking.bookingStatus}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-${booking.paymentStatus}">
-                                            ${booking.paymentStatus}
-                                        </span>
-                                        <span class="table-subtext">Rs. ${booking.totalAmount}</span>
-                                        <c:if test="${booking.paymentStatus == 'paid' && not empty booking.paidAt}">
-                                            <span class="table-subtext">${booking.paidAt}</span>
-                                        </c:if>
-                                    </td>
-                                    <td>
+                            <c:set var="visibleBookingCount" value="${visibleBookingCount + 1}" />
+                            <tr>
+                                <td>${booking.bookingId}</td>
+                                <td>
+                                    <strong>${booking.customerName}</strong>
+                                    <span class="table-subtext">${booking.customerEmail}</span>
+                                </td>
+                                <td>
+                                    <strong>${booking.bikeName}</strong>
+                                    <span class="table-subtext">${booking.bikeBrand} - ${booking.registrationNumber}</span>
+                                </td>
+                                <td>${booking.startDate} to ${booking.endDate}</td>
+                                <td>Rs. ${booking.totalAmount}</td>
+                                <td>
+                                    <span class="badge badge-${booking.bookingStatus}">
+                                        ${booking.bookingStatus}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-${booking.paymentStatus}">
+                                        ${booking.paymentStatus}
+                                    </span>
+                                    <span class="table-subtext">Rs. ${booking.totalAmount}</span>
+                                    <c:if test="${booking.paymentStatus == 'paid' && not empty booking.paidAt}">
+                                        <span class="table-subtext">${booking.paidAt}</span>
+                                    </c:if>
+                                </td>
+                                <td>
+                                    <form class="booking-status-form" action="${bookingActionPath}" method="post">
+                                        <input type="hidden" name="bookingId" value="${booking.bookingId}">
+                                        <select name="bookingStatus" class="role-select">
+                                            <option value="pending" ${booking.bookingStatus == 'pending' ? 'selected' : ''}>Pending</option>
+                                            <option value="approved" ${booking.bookingStatus == 'approved' ? 'selected' : ''}>Approved</option>
+                                            <option value="rejected" ${booking.bookingStatus == 'rejected' ? 'selected' : ''}>Rejected</option>
+                                            <option value="completed" ${booking.bookingStatus == 'completed' ? 'selected' : ''}>Completed</option>
+                                            <option value="cancelled" ${booking.bookingStatus == 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                                        </select>
+                                        <button type="submit" class="btn-update">Update</button>
+                                    </form>
+                                    <c:if test="${booking.paymentStatus != 'paid'}">
                                         <form class="booking-status-form" action="${bookingActionPath}" method="post">
+                                            <input type="hidden" name="action" value="markPaid">
                                             <input type="hidden" name="bookingId" value="${booking.bookingId}">
-                                            <select name="bookingStatus" class="role-select">
-                                                <option value="pending" ${booking.bookingStatus == 'pending' ? 'selected' : ''}>Pending</option>
-                                                <option value="approved" ${booking.bookingStatus == 'approved' ? 'selected' : ''}>Approved</option>
-                                                <option value="rejected" ${booking.bookingStatus == 'rejected' ? 'selected' : ''}>Rejected</option>
-                                                <option value="completed" ${booking.bookingStatus == 'completed' ? 'selected' : ''}>Completed</option>
-                                                <option value="cancelled" ${booking.bookingStatus == 'cancelled' ? 'selected' : ''}>Cancelled</option>
-                                            </select>
-                                            <button type="submit" class="btn-update">Update</button>
+                                            <button type="submit" class="btn-secondary">Mark Paid</button>
                                         </form>
-                                        <c:if test="${booking.paymentStatus != 'paid'}">
-                                            <form class="booking-status-form" action="${bookingActionPath}" method="post">
-                                                <input type="hidden" name="action" value="markPaid">
-                                                <input type="hidden" name="bookingId" value="${booking.bookingId}">
-                                                <button type="submit" class="btn-secondary">Mark Paid</button>
-                                            </form>
-                                        </c:if>
-                                    </td>
-                                </tr>
-                            </c:if>
+                                    </c:if>
+                                </td>
+                            </tr>
                         </c:forEach>
                         <c:if test="${visibleBookingCount == 0}">
                             <tr>

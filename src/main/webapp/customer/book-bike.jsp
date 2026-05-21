@@ -50,6 +50,16 @@
                     <div class="error-message">${error}</div>
                 </c:if>
 
+                <div class="booking-details">
+                    <h3>${bike.name}</h3>
+                    <p class="bike-brand">${bike.brand} · ${bike.type}</p>
+                    <p class="bike-description">${bike.description}</p>
+                    <div class="booking-details-meta">
+                        <span>Per day</span>
+                        <strong>Rs. ${bike.pricePerDay}</strong>
+                    </div>
+                </div>
+
                 <c:choose>
                     <c:when test="${canBook}">
                         <form action="${pageContext.request.contextPath}/customer/book" method="post" class="booking-form">
