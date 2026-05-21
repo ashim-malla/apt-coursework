@@ -76,6 +76,7 @@
                                     <div class="booked-bike-meta">
                                         <span>${booking.startDate} to ${booking.endDate}</span>
                                         <strong>Rs. ${booking.totalAmount}</strong>
+                                        <span>${booking.paymentStatus}</span>
                                     </div>
                                 </div>
                             </article>
@@ -153,6 +154,7 @@
                                     <div>
                                         <h3>${booking.bikeName}</h3>
                                         <p>${booking.startDate} to ${booking.endDate}</p>
+                                        <p>Rs. ${booking.totalAmount} - ${booking.paymentStatus}</p>
                                     </div>
                                     <span class="bike-status status-${booking.bookingStatus}">
                                         <c:choose>

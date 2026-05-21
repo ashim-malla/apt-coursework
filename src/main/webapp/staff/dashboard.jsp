@@ -42,7 +42,69 @@
                     <p class="stat-value">${availableBikes}</p>
                 </div>
             </div>
+            <div class="stat-card">
+                <div class="stat-icon">$</div>
+                <div class="stat-info">
+                    <p class="stat-label">Payment Records</p>
+                    <p class="stat-value">${totalPayments}</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">Rs</div>
+                <div class="stat-info">
+                    <p class="stat-label">Revenue</p>
+                    <p class="stat-value">Rs. ${totalRevenue}</p>
+                </div>
+            </div>
         </div>
+
+        <h3 class="section-heading">Recent Payments</h3>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Booking</th>
+                    <th>Customer</th>
+                    <th>Bike</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Paid Date/Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${empty recentPayments}">
+                        <tr>
+                            <td colspan="7" style="text-align:center; color:#888;">No payment records found</td>
+                        </tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="p" items="${recentPayments}">
+                            <tr>
+                                <td>#${p.bookingId}</td>
+                                <td>
+                                    <strong>${p.customerName}</strong>
+                                    <span class="table-subtext">${p.customerEmail}</span>
+                                </td>
+                                <td>
+                                    <strong>${p.bikeName}</strong>
+                                    <span class="table-subtext">${p.registrationNumber}</span>
+                                </td>
+                                <td>Rs. ${p.paymentAmount}</td>
+                                <td>${p.paymentMethod}</td>
+                                <td><span class="badge badge-${p.paymentStatus}">${p.paymentStatus}</span></td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${not empty p.paidAt}">${p.paidAt}</c:when>
+                                        <c:otherwise>-</c:otherwise>
+                                    </c:choose>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
 
         <h3 class="section-heading">Staff Tasks To Build Next</h3>
         <div class="quick-actions">
@@ -53,14 +115,20 @@
                     <p>Approve, reject, complete, or cancel customer booking requests.</p>
                 </div>
             </a>
-            <div class="action-card">
+            <a class="action-card" href="${pageContext.request.contextPath}/staff/bikes">
                 <div class="action-icon">2</div>
                 <div class="action-info">
                     <h4>Manage Bikes</h4>
                     <p>Edit bike details, availability, and uploaded bike photos.</p>
                 </div>
-                <a class="text-link" href="${pageContext.request.contextPath}/staff/bikes">Open bikes</a>
-            </div>
+            </a>
+            <a class="action-card" href="${pageContext.request.contextPath}/staff/dashboard#recent-payments">
+                <div class="action-icon">Rs</div>
+                <div class="action-info">
+                    <h4>Payment History</h4>
+                    <p>View payment amount, status, and paid date/time.</p>
+                </div>
+            </a>
             <a class="${showProfile ? 'action-card action-card-active' : 'action-card'}" href="${pageContext.request.contextPath}/staff/dashboard?showProfile=true&currentShowProfile=${showProfile}&toggleProfile=true#profile">
                 <div class="action-icon">3</div>
                 <div class="action-info">

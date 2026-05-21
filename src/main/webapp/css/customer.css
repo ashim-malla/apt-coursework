@@ -262,15 +262,22 @@
     color: #f57c00;
 }
 
-.status-approved {
+.status-approved,
+.status-paid {
     background: #f0fff4;
     color: #2e7d32;
 }
 
 .status-rejected,
-.status-cancelled {
+.status-cancelled,
+.status-failed {
     background: #fff0f0;
     color: #cc0000;
+}
+
+.status-refunded {
+    background: #f0f4ff;
+    color: #1a237e;
 }
 
 .status-completed {

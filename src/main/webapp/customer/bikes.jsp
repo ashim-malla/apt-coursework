@@ -68,7 +68,7 @@
                                             <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
                                         </c:when>
                                         <c:otherwise>
-                                            <button type="button" class="btn-disabled" disabled>Customers Only</button>
+                                            <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>

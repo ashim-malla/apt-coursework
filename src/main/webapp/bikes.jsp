@@ -64,17 +64,7 @@
                                     </div>
                                     <c:choose>
                                         <c:when test="${bike.status == 'available'}">
-                                            <c:choose>
-                                                <c:when test="${not empty sessionScope.user && sessionScope.role == 'customer'}">
-                                                    <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
-                                                </c:when>
-                                                <c:when test="${not empty sessionScope.user && sessionScope.role != 'customer'}">
-                                                    <button type="button" class="btn-disabled" disabled>Customers Only</button>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <a class="book-link" href="${pageContext.request.contextPath}/login">Book</a>
-                                                </c:otherwise>
-                                            </c:choose>
+                                            <a class="book-link" href="${pageContext.request.contextPath}/customer/book?bikeId=${bike.bikeId}">Book</a>
                                         </c:when>
                                         <c:otherwise>
                                             <button type="button" class="btn-disabled" disabled>Unavailable</button>

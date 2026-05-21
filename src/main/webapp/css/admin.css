@@ -160,13 +160,20 @@
 }
 
 .badge-approved,
-.badge-completed {
+.badge-completed,
+.badge-paid {
     background: #f0fff4;
     color: #2e7d32;
 }
 
+.badge-refunded {
+    background: #f0f4ff;
+    color: #1a237e;
+}
+
 .badge-rejected,
-.badge-cancelled {
+.badge-cancelled,
+.badge-failed {
     background: #fff0f0;
     color: #cc0000;
 }
@@ -305,6 +312,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 6px;
+}
+
+.booking-status-form:last-child {
+    margin-bottom: 0;
 }
 
 .admin-bike-thumb {

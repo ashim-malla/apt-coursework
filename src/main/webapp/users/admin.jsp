@@ -112,6 +112,93 @@
             </tbody>
         </table>
 
+        <h3 class="section-heading">Admins</h3>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${empty adminUsers}">
+                        <tr>
+                            <td colspan="7" style="text-align:center; color:#888;">
+                                No admins found
+                            </td>
+                        </tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="u" items="${adminUsers}">
+                            <tr>
+                                <td>${u.userId}</td>
+                                <td>${u.name}</td>
+                                <td>${u.email}</td>
+                                <td>${u.phone}</td>
+                                <td>
+                                    <span class="badge badge-${u.role}">
+                                        ${u.role}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-${u.accountStatus}">
+                                        ${u.accountStatus}
+                                    </span>
+                                </td>
+                                <td>
+                                    <form action="${pageContext.request.contextPath}/admin/users"
+                                          method="post" style="display:inline;">
+                                        <input type="hidden" name="userId" value="${u.userId}">
+                                        <select name="role" class="role-select">
+                                            <option value="admin"
+                                                ${u.role == 'admin' ? 'selected' : ''}>
+                                                Admin
+                                            </option>
+                                            <option value="staff"
+                                                ${u.role == 'staff' ? 'selected' : ''}>
+                                                Staff
+                                            </option>
+                                            <option value="customer"
+                                                ${u.role == 'customer' ? 'selected' : ''}>
+                                                Customer
+                                            </option>
+                                        </select>
+                                        <select name="accountStatus" class="role-select">
+                                            <option value="pending"
+                                                ${u.accountStatus == 'pending' ? 'selected' : ''}>
+                                                Pending
+                                            </option>
+                                            <option value="active"
+                                                ${u.accountStatus == 'active' ? 'selected' : ''}>
+                                                Active
+                                            </option>
+                                            <option value="suspended"
+                                                ${u.accountStatus == 'suspended' ? 'selected' : ''}>
+                                                Suspended
+                                            </option>
+                                        </select>
+                                        <button type="submit" class="btn-update">Update</button>
+                                    </form>
+                                    <form action="${pageContext.request.contextPath}/admin/users"
+                                          method="post" style="display:inline;">
+                                        <input type="hidden" name="action" value="delete">
+                                        <input type="hidden" name="userId" value="${u.userId}">
+                                        <button type="submit" class="btn-delete">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
+
         <c:if test="${not empty selectedCustomerError}">
             <div class="error-message" style="margin-top:16px;">${selectedCustomerError}</div>
         </c:if>
@@ -154,13 +241,14 @@
                         <th>Dates</th>
                         <th>Total</th>
                         <th>Status</th>
+                        <th>Payment</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:choose>
                         <c:when test="${empty selectedCustomerBookings}">
                             <tr>
-                                <td colspan="5" style="text-align:center; color:#888;">
+                                <td colspan="6" style="text-align:center; color:#888;">
                                     No bookings found for this customer
                                 </td>
                             </tr>
@@ -176,6 +264,12 @@
                                         <span class="badge badge-${b.bookingStatus}">
                                             ${b.bookingStatus}
                                         </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-${b.paymentStatus}">
+                                            ${b.paymentStatus}
+                                        </span>
+                                        <span class="table-subtext">Rs. ${b.totalAmount}</span>
                                     </td>
                                 </tr>
                             </c:forEach>

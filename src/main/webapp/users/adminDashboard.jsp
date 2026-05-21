@@ -81,6 +81,22 @@
                     <p class="stat-value">Rs. ${totalRevenue}</p>
                 </div>
             </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background:#f0f4ff; color:#1a237e;">$</div>
+                <div class="stat-info">
+                    <p class="stat-label">Payment Records</p>
+                    <p class="stat-value">${totalPayments}</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background:#f0fff4; color:#2e7d32;">Paid</div>
+                <div class="stat-info">
+                    <p class="stat-label">Paid Payments</p>
+                    <p class="stat-value">${paidPayments}</p>
+                </div>
+            </div>
         </div>
 
         <!-- QUICK ACTIONS -->
@@ -115,6 +131,15 @@
                     <p>View and manage all bookings</p>
                 </div>
                 <div class="action-arrow">→</div>
+            </a>
+            <a href="${pageContext.request.contextPath}/admin/dashboard#recent-payments"
+               class="action-card">
+                <div class="action-icon">Rs</div>
+                <div class="action-info">
+                    <h4>Payment History</h4>
+                    <p>View payment amount, status, and paid date/time.</p>
+                </div>
+                <div class="action-arrow">â†’</div>
             </a>
             <a href="${pageContext.request.contextPath}/admin/dashboard?showProfile=true&currentShowProfile=${showProfile}&toggleProfile=true#profile"
                class="${showProfile ? 'action-card action-card-active' : 'action-card'}">
@@ -166,6 +191,54 @@
                                     <span class="badge badge-${u.accountStatus}">
                                         ${u.accountStatus}
                                     </span>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
+
+        <h3 class="section-heading" id="recent-payments" style="margin-top:26px;">Recent Payments</h3>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Booking</th>
+                    <th>Customer</th>
+                    <th>Bike</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Paid Date/Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${empty recentPayments}">
+                        <tr>
+                            <td colspan="7" style="text-align:center; color:#888;">No payment records found</td>
+                        </tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="p" items="${recentPayments}">
+                            <tr>
+                                <td>#${p.bookingId}</td>
+                                <td>
+                                    <strong>${p.customerName}</strong>
+                                    <span class="table-subtext">${p.customerEmail}</span>
+                                </td>
+                                <td>
+                                    <strong>${p.bikeName}</strong>
+                                    <span class="table-subtext">${p.registrationNumber}</span>
+                                </td>
+                                <td>Rs. ${p.paymentAmount}</td>
+                                <td>${p.paymentMethod}</td>
+                                <td><span class="badge badge-${p.paymentStatus}">${p.paymentStatus}</span></td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${not empty p.paidAt}">${p.paidAt}</c:when>
+                                        <c:otherwise>-</c:otherwise>
+                                    </c:choose>
                                 </td>
                             </tr>
                         </c:forEach>

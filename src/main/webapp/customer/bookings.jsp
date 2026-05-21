@@ -50,6 +50,10 @@
                                     <span class="price-label">Total</span>
                                     <strong>Rs. ${booking.totalAmount}</strong>
                                 </div>
+                                <div>
+                                    <span class="price-label">Payment</span>
+                                    <strong>${booking.paymentStatus}</strong>
+                                </div>
                                 <span class="bike-status status-${booking.bookingStatus}">
                                     <c:choose>
                                         <c:when test="${booking.bookingStatus == 'approved'}">Booked</c:when>

@@ -50,21 +50,34 @@
                     <div class="error-message">${error}</div>
                 </c:if>
 
-                <form action="${pageContext.request.contextPath}/customer/book" method="post" class="booking-form">
-                    <input type="hidden" name="bikeId" value="${bike.bikeId}">
+                <c:choose>
+                    <c:when test="${canBook}">
+                        <form action="${pageContext.request.contextPath}/customer/book" method="post" class="booking-form">
+                            <input type="hidden" name="bikeId" value="${bike.bikeId}">
 
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <input type="date" name="startDate" required>
-                    </div>
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="date" name="startDate" required>
+                            </div>
 
-                    <div class="form-group">
-                        <label>End Date</label>
-                        <input type="date" name="endDate" required>
-                    </div>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="date" name="endDate" required>
+                            </div>
 
-                    <button type="submit" class="hero-action">Submit Booking Request</button>
-                </form>
+                            <button type="submit" class="hero-action">Submit Booking Request</button>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="booking-empty">
+                            <strong>Log in to continue</strong>
+                            <p>Customers can choose dates and send a booking request from here.</p>
+                        </div>
+                        <div class="form-actions">
+                            <a class="hero-action" href="${pageContext.request.contextPath}/login">Log In</a>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </section>
         </section>
     </main>
